@@ -22,5 +22,5 @@ tags.temp
 resources/config/config-local.edn
 .calva
 .cpcache/
-.lsp/
+.lsp/.cache/
 output.calva-repl
