@@ -13,7 +13,6 @@ pom.xml.asc
 config/local
 .idea
 .iml
-.cpcache
 .eastwood
 .rebel_readline_history
 local
@@ -24,3 +23,4 @@ resources/config/config-local.edn
 .calva
 .cpcache/
 .lsp/
+output.calva-repl
