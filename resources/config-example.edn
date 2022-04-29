@@ -1,0 +1,23 @@
+;;
+;; Configuration
+;;
+{:secrets {:db {:dbtype "postgres"
+                :dbname "startrek"
+                :host "postgres"
+                :port 5432
+                :username "theborg"
+                :password "resistanceisfutile"}}
+
+ :runtime-config {:jetty {:port 9503}}
+
+ :components
+ ;; opqaue "$deity" configuration
+ {:app-config {:start {:db (clip/ref :db)
+                       :runtime-config #ref [:runtime-config]
+                       :secrets #ref [:secrets]}}
+
+  :db {:start (bootstrap-api.components.database.cli/start #ref [:secrets :db])
+       :stop  (bootstrap-api.components.database.cli/stop this)}
+
+  :router {:start (bootstrap-api.api.router/start (clip/ref :app-config))
+           :stop  (bootstrap-api.api.router this)}}}

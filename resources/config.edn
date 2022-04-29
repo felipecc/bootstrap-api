@@ -1,0 +1,22 @@
+;;
+;; Configuration
+;;
+{:secrets #include "/var/run/secrets/startrek-secrets-config.edn" ;; externalised and usually "mounted" as a docker/kubernetes secret
+
+ :runtime-config #include "/config/startrek-runtime-config.edn" ;; externalised and usually "mounted" as a docker/kubernetes secret
+
+ :components
+ ;; opqaue "$deity" configuration
+ {:app-config {:start {:db (clip/ref :db)
+                       :runtime-config #ref [:runtime-config]
+                       :secrets #ref [:secrets]}}
+
+  :db {:start (startrek.components.database.impl/start #ref [:secrets :db])
+       :post-start (startrek.components.database.impl/post-start this ["db/migration/postgresql"])
+       :stop (startrek.components.database.impl/stop this)}
+
+  :jmxmp {:start (startrek.components.jmxmp.impl/start #ref [:runtime-config :jmxmp])
+          :stop (startrek.components.jmxmp.impl/stop this)}
+
+  :router {:start (startrek.api.router/start (clip/ref :app-config))
+           :stop (startrek.api.router/stop this)}}}

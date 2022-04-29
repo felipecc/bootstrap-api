@@ -1,0 +1,37 @@
+{:paths ["src" "resources"]
+ :deps {org.clojure/clojure               {:mvn/version "1.10.3"}
+        ring/ring-core                    {:mvn/version "1.6.3"}
+        ring-cors/ring-cors               {:mvn/version "0.1.13"}
+        ring/ring-jetty-adapter           {:mvn/version "1.9.4"}
+        http-kit/http-kit                 {:mvn/version "2.6.0-alpha1"}
+        com.zaxxer/HikariCP               {:mvn/version "3.3.1"}
+        com.github.seancorfield/next.jdbc {:mvn/version "1.2.772"}
+        org.clojure/tools.namespace       {:mvn/version "1.2.0"}
+        reloaded.repl/reloaded.repl       {:mvn/version "0.2.4"}
+        juxt/clip                         {:mvn/version "0.27.0"}
+        metosin/muuntaja                  {:mvn/version "0.6.8"}
+        metosin/reitit                    {:mvn/version "0.5.18"}
+        aero/aero                         {:mvn/version "1.1.6"}
+        org.postgresql/postgresql         {:mvn/version "42.3.1"}
+        ojdbc/ojdbc6                      {:local/root "jars/ojdbc6.jar"}
+        org.clojure/tools.cli             {:mvn/version "1.0.206"}
+        org.clojure/tools.logging         {:mvn/version "1.2.4"}}
+ :aliases
+ {:dev 
+  {:extra-paths ["dev"]}
+  :test
+  {:extra-paths ["test"]
+   :extra-deps {org.clojure/test.check {:mvn/version "1.1.0"}
+                io.github.cognitect-labs/test-runner
+                {:git/url "https://github.com/cognitect-labs/test-runner"
+                 :sha "62ef1de18e076903374306060ac0e8a752e57c86"}}
+   :exec-fn cognitect.test-runner.api/test}
+  :jar {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.1.278"}}
+        :exec-fn hf.depstar/jar
+        :exec-args {:jar "bootstrap-api.jar" :sync-pom true}}
+  :install {:replace-deps {slipset/deps-deploy {:mvn/version "0.1.5"}}
+            :exec-fn deps-deploy.deps-deploy/deploy
+            :exec-args {:installer :local :artifact "bootstrap-api.jar"}}
+  :deploy {:replace-deps {slipset/deps-deploy {:mvn/version "0.1.5"}}
+           :exec-fn deps-deploy.deps-deploy/deploy
+           :exec-args {:installer :remote :artifact "bootstrap-api.jar"}}}}
