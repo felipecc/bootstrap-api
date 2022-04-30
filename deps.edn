@@ -1,21 +1,27 @@
 {:paths ["src" "resources"]
- :deps {org.clojure/clojure               {:mvn/version "1.10.3"}
-        ring/ring-core                    {:mvn/version "1.6.3"}
-        ring-cors/ring-cors               {:mvn/version "0.1.13"}
-        ring/ring-jetty-adapter           {:mvn/version "1.9.4"}
-        http-kit/http-kit                 {:mvn/version "2.6.0-alpha1"}
-        com.zaxxer/HikariCP               {:mvn/version "3.3.1"}
-        com.github.seancorfield/next.jdbc {:mvn/version "1.2.772"}
-        org.clojure/tools.namespace       {:mvn/version "1.2.0"}
-        reloaded.repl/reloaded.repl       {:mvn/version "0.2.4"}
-        juxt/clip                         {:mvn/version "0.27.0"}
-        metosin/muuntaja                  {:mvn/version "0.6.8"}
-        metosin/reitit                    {:mvn/version "0.5.18"}
-        aero/aero                         {:mvn/version "1.1.6"}
-        org.postgresql/postgresql         {:mvn/version "42.3.1"}
-        ojdbc/ojdbc6                      {:local/root "jars/ojdbc6.jar"}
-        org.clojure/tools.cli             {:mvn/version "1.0.206"}
-        org.clojure/tools.logging         {:mvn/version "1.2.4"}}
+ :deps {org.clojure/clojure                    {:mvn/version "1.10.3"}
+        ring/ring-core                         {:mvn/version "1.6.3"}
+        ring-cors/ring-cors                    {:mvn/version "0.1.13"}
+        ring/ring-jetty-adapter                {:mvn/version "1.9.4"}
+        http-kit/http-kit                      {:mvn/version "2.6.0-alpha1"}
+        com.zaxxer/HikariCP                    {:mvn/version "3.3.1"}
+        com.github.seancorfield/next.jdbc      {:mvn/version "1.2.772"}
+        org.clojure/tools.namespace            {:mvn/version "1.2.0"}
+        reloaded.repl/reloaded.repl            {:mvn/version "0.2.4"}
+        juxt/clip                              {:mvn/version "0.27.0"}
+        metosin/muuntaja                       {:mvn/version "0.6.8"}
+        metosin/reitit                         {:mvn/version "0.5.18"}
+        metosin/malli                          {:mvn/version "0.8.4"}
+        aero/aero                              {:mvn/version "1.1.6"}
+        org.postgresql/postgresql              {:mvn/version "42.3.1"}
+        ojdbc/ojdbc6                           {:local/root "jars/ojdbc6.jar"}
+        org.clojure/tools.cli                  {:mvn/version "1.0.206"}
+        org.clojure/tools.logging              {:mvn/version "1.2.4"}
+        com.layerware/hugsql                   {:mvn/version "0.5.1"}
+        com.layerware/hugsql-core              {:mvn/version "0.5.1"}
+        com.layerware/hugsql-adapter-next-jdbc {:mvn/version "0.5.1"}
+        metosin/jsonista                       {:mvn/version "0.3.5"}
+}
  :aliases
  {:dev 
   {:extra-paths ["dev"]}

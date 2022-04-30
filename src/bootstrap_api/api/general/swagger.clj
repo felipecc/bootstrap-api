@@ -8,4 +8,4 @@
   ["/swagger.json" {:get {:no-doc true
                           :swagger {:info {:title (:title-api config)}
                                     :basePath "/"}
-                          :handle (swagger/create-swagger-handler)}}])
+                          :handler (swagger/create-swagger-handler)}}])
