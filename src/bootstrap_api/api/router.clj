@@ -22,6 +22,7 @@
 
 (set! *warn-on-reflection* true)
 
+
 (def ^:private cors-middleware
   [wrap-cors
    :access-control-allow-origin [#".*"]

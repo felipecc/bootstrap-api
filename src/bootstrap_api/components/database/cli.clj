@@ -8,6 +8,12 @@
            (com.zaxxer.hikari HikariConfig)))
 
 
+(hugsql/set-adapter! (next-adapter/hugsql-adapter-next-jdbc
+                          {:builder-fn (rs/as-maps-adapter
+                                        rs/as-lower-maps
+                                        rs/clob-column-reader)}))
+
+
 (defn datasource-config [spec-db]
   (let [config (HikariConfig.)]
     (doto config
