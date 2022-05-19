@@ -2,6 +2,7 @@
   (:require [bootstrap-api.main :as main]
             [clojure.tools.namespace.repl :as nr]
             [next.jdbc.connection :as connection]
+            [clojure.tools.namespace.repl :refer [refresh]]
             [juxt.clip.repl :refer [start stop set-init! system]]
             [bootstrap-api.components.database.documentos :as doc]
             [bootstrap-api.components.database.cli :as database-cli])
