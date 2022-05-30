@@ -14,7 +14,7 @@
 (defn get-all-documentos-oracle
   [app-config]
   (fn [request]
-    (let [rs (doc/get-all-documentos (:db-oracle app-config))]
+    (let [rs (doc/get-all-documentos-cabecalho (:db-oracle app-config))]
       {:status ok :body rs})))
 
 (defn get-all-documentos-pg

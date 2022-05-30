@@ -1,4 +1,4 @@
--- :name get-all-documentos-cabecalho:? :*
+-- :name get-all-documentos-cabecalho :? :*
 -- :doc Get all documentos cabecalho
 select ed.cd_documento
       ,edi.cd_editor_registro -- usado para recuperar o pdf no link do mveditor
@@ -20,6 +20,7 @@ join dbamv.editor_documento          ed on(ed.cd_documento = ev.cd_documento)
 join dbamv.atendime                  me on(me.cd_atendimento = doc.cd_atendimento)
 where doc.tp_status = upper('fechado')
   and trunc(doc.dh_fechamento) = to_date('23/06/2020 00:00:00','dd/mm/yyyy hh24:mi:ss')  
+  and rownum < 10
 
 
 
